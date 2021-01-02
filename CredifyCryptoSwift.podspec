@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "CredifyCryptoSwift"
-  spec.version = "1.0.0"
+  spec.version = "1.0.1"
   spec.summary = "Credify crypto related framework in Swift"
   spec.description = "Cryptography functions and helpers for Swift. Ed25519 signing, RSA encryption. With PKCS#8 format."
   spec.homepage = "https://github.com/credify-pte-ltd/CredifyCryptoSwift"
@@ -11,8 +11,8 @@ Pod::Spec.new do |spec|
   spec.platform = :ios, "12.0"
   spec.requires_arc = true
   spec.source = { git: "https://github.com/credify-pte-ltd/CredifyCryptoSwift.git", tag: "v#{spec.version}", submodules: true }
-  spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}", "CredifyCryptoSwift/Crypto.framework/Headers/*.h"
-  spec.ios.public_header_files = "CredifyCryptoSwift/Crypto.framework/Versions/A/Headers/*.h"
-  spec.vendored_frameworks = "CredifyCryptoSwift/Crypto.framework"
+  spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}", "CredifyCryptoSwift/Crypto.framework"
+  # spec.ios.public_header_files = "CredifyCryptoSwift/Crypto.framework/Versions/A/Headers/*.h"
+  spec.ios.vendored_frameworks = "CredifyCryptoSwift/Crypto.framework"
 
 end

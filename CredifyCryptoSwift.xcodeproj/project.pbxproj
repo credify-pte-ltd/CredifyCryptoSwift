@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,7 +11,6 @@
 		25818FC625A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FC525A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift */; };
 		25818FC825A03C5D00D8CEA5 /* CredifyCryptoSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		25818FD425A03C7C00D8CEA5 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FD325A03C7C00D8CEA5 /* Encryption.swift */; };
-		25818FD825A03C9100D8CEA5 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25818FD725A03C9100D8CEA5 /* Crypto.framework */; };
 		25818FDC25A03D4B00D8CEA5 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FDB25A03D4B00D8CEA5 /* Errors.swift */; };
 		25818FE025A04B2500D8CEA5 /* Signing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FDF25A04B2500D8CEA5 /* Signing.swift */; };
 		25818FE425A050E200D8CEA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FE325A050E200D8CEA5 /* Extensions.swift */; };
@@ -27,6 +26,7 @@
 		2581901D25A0678A00D8CEA5 /* EncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */; };
 		2581902B25A06E0500D8CEA5 /* SigningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581902A25A06E0500D8CEA5 /* SigningView.swift */; };
 		2581903825A06E8100D8CEA5 /* EncryptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581903725A06E8100D8CEA5 /* EncryptionView.swift */; };
+		2581906325A09A3200D8CEA5 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25818FD725A03C9100D8CEA5 /* Crypto.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25818FD825A03C9100D8CEA5 /* Crypto.framework in Frameworks */,
+				2581906325A09A3200D8CEA5 /* Crypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +383,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -447,6 +448,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -494,9 +496,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = one.credify.CredifyCryptoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -522,11 +525,13 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = one.credify.CredifyCryptoSwift;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
