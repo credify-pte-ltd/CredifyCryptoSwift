@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.homepage = "https://github.com/credify-pte-ltd/Credify-Crypto-Swift"
   spec.license = { type: 'MIT', file: 'LICENSE' }
   spec.authors = { "Shuichi Nagao" => 'shu@credify.one' }
-  spec.social_media_url = "https://www.linkedin.com/company/credifyone"
+  spec.social_media_url = "https://credify.one"
 
   spec.platform = :ios, "12.0"
   spec.requires_arc = true
