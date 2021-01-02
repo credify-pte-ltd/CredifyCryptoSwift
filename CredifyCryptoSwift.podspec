@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "CredifyCryptoSwift"
-  spec.version = "1.0.7"
+  spec.version = "1.0.8"
   spec.summary = "Credify crypto related framework in Swift"
   spec.description = "Cryptography functions and helpers for Swift. Ed25519 signing, RSA encryption. With PKCS#8 format."
   spec.homepage = "https://github.com/credify-pte-ltd/CredifyCryptoSwift"
