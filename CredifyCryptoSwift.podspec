@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = "CredifyCryptoSwift"
-  spec.version = "1.0.6"
+  spec.version = "1.0.7"
   spec.summary = "Credify crypto related framework in Swift"
   spec.description = "Cryptography functions and helpers for Swift. Ed25519 signing, RSA encryption. With PKCS#8 format."
   spec.homepage = "https://github.com/credify-pte-ltd/CredifyCryptoSwift"
@@ -10,6 +10,7 @@ Pod::Spec.new do |spec|
   spec.swift_version = "5.3"
   spec.platform = :ios, "12.0"
   # spec.requires_arc = true
+# spec.user_target_xcconfig = { 'ONLY_ACTIVE_ARCH' => 'YES' }
 # spec.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 #  spec.pod_target_xcconfig = { 'ONLY_ACTIVE_ARCH' => 'YES' }
   spec.source = { git: "https://github.com/credify-pte-ltd/CredifyCryptoSwift.git", tag: "v#{spec.version}" }
