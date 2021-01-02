@@ -15,6 +15,18 @@
 		25818FDC25A03D4B00D8CEA5 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FDB25A03D4B00D8CEA5 /* Errors.swift */; };
 		25818FE025A04B2500D8CEA5 /* Signing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FDF25A04B2500D8CEA5 /* Signing.swift */; };
 		25818FE425A050E200D8CEA5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FE325A050E200D8CEA5 /* Extensions.swift */; };
+		25818FF425A05D4100D8CEA5 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FF325A05D4100D8CEA5 /* ExampleApp.swift */; };
+		25818FF625A05D4100D8CEA5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FF525A05D4100D8CEA5 /* ContentView.swift */; };
+		25818FF825A05D4300D8CEA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25818FF725A05D4300D8CEA5 /* Assets.xcassets */; };
+		25818FFB25A05D4300D8CEA5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25818FFA25A05D4300D8CEA5 /* Preview Assets.xcassets */; };
+		2581900425A05E2800D8CEA5 /* SigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581900325A05E2800D8CEA5 /* SigningTests.swift */; };
+		2581900925A064BE00D8CEA5 /* testPublicKeySign.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2581900825A064BE00D8CEA5 /* testPublicKeySign.pem */; };
+		2581901325A064FC00D8CEA5 /* testPublicKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2581901025A064FC00D8CEA5 /* testPublicKey.pem */; };
+		2581901425A064FC00D8CEA5 /* testPrivateKey.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2581901125A064FC00D8CEA5 /* testPrivateKey.pem */; };
+		2581901525A064FC00D8CEA5 /* testPrivateKeySign.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2581901225A064FC00D8CEA5 /* testPrivateKeySign.pem */; };
+		2581901D25A0678A00D8CEA5 /* EncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */; };
+		2581902B25A06E0500D8CEA5 /* SigningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581902A25A06E0500D8CEA5 /* SigningView.swift */; };
+		2581903825A06E8100D8CEA5 /* EncryptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581903725A06E8100D8CEA5 /* EncryptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +51,20 @@
 		25818FDB25A03D4B00D8CEA5 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		25818FDF25A04B2500D8CEA5 /* Signing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signing.swift; sourceTree = "<group>"; };
 		25818FE325A050E200D8CEA5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		25818FF125A05D4100D8CEA5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25818FF325A05D4100D8CEA5 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
+		25818FF525A05D4100D8CEA5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		25818FF725A05D4300D8CEA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		25818FFA25A05D4300D8CEA5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		25818FFC25A05D4300D8CEA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2581900325A05E2800D8CEA5 /* SigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningTests.swift; sourceTree = "<group>"; };
+		2581900825A064BE00D8CEA5 /* testPublicKeySign.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testPublicKeySign.pem; sourceTree = "<group>"; };
+		2581901025A064FC00D8CEA5 /* testPublicKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testPublicKey.pem; sourceTree = "<group>"; };
+		2581901125A064FC00D8CEA5 /* testPrivateKey.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testPrivateKey.pem; sourceTree = "<group>"; };
+		2581901225A064FC00D8CEA5 /* testPrivateKeySign.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testPrivateKeySign.pem; sourceTree = "<group>"; };
+		2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionTests.swift; sourceTree = "<group>"; };
+		2581902A25A06E0500D8CEA5 /* SigningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningView.swift; sourceTree = "<group>"; };
+		2581903725A06E8100D8CEA5 /* EncryptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +84,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		25818FEE25A05D4100D8CEA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,6 +99,7 @@
 			children = (
 				25818FB925A03C5D00D8CEA5 /* CredifyCryptoSwift */,
 				25818FC425A03C5D00D8CEA5 /* CredifyCryptoSwiftTests */,
+				25818FF225A05D4100D8CEA5 /* Example */,
 				25818FB825A03C5D00D8CEA5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +109,7 @@
 			children = (
 				25818FB725A03C5D00D8CEA5 /* CredifyCryptoSwift.framework */,
 				25818FC025A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.xctest */,
+				25818FF125A05D4100D8CEA5 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,10 +131,38 @@
 		25818FC425A03C5D00D8CEA5 /* CredifyCryptoSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				2581901125A064FC00D8CEA5 /* testPrivateKey.pem */,
+				2581901225A064FC00D8CEA5 /* testPrivateKeySign.pem */,
+				2581901025A064FC00D8CEA5 /* testPublicKey.pem */,
+				2581900825A064BE00D8CEA5 /* testPublicKeySign.pem */,
 				25818FC525A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift */,
 				25818FC725A03C5D00D8CEA5 /* Info.plist */,
+				2581900325A05E2800D8CEA5 /* SigningTests.swift */,
+				2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */,
 			);
 			path = CredifyCryptoSwiftTests;
+			sourceTree = "<group>";
+		};
+		25818FF225A05D4100D8CEA5 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				25818FF325A05D4100D8CEA5 /* ExampleApp.swift */,
+				25818FF525A05D4100D8CEA5 /* ContentView.swift */,
+				25818FF725A05D4300D8CEA5 /* Assets.xcassets */,
+				25818FFC25A05D4300D8CEA5 /* Info.plist */,
+				25818FF925A05D4300D8CEA5 /* Preview Content */,
+				2581902A25A06E0500D8CEA5 /* SigningView.swift */,
+				2581903725A06E8100D8CEA5 /* EncryptionView.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		25818FF925A05D4300D8CEA5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				25818FFA25A05D4300D8CEA5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +215,23 @@
 			productReference = 25818FC025A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		25818FF025A05D4100D8CEA5 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25818FFD25A05D4300D8CEA5 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				25818FED25A05D4100D8CEA5 /* Sources */,
+				25818FEE25A05D4100D8CEA5 /* Frameworks */,
+				25818FEF25A05D4100D8CEA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = 25818FF125A05D4100D8CEA5 /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -166,6 +246,9 @@
 						LastSwiftMigration = 1230;
 					};
 					25818FBF25A03C5D00D8CEA5 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					25818FF025A05D4100D8CEA5 = {
 						CreatedOnToolsVersion = 12.3;
 					};
 				};
@@ -185,6 +268,7 @@
 			targets = (
 				25818FB625A03C5D00D8CEA5 /* CredifyCryptoSwift */,
 				25818FBF25A03C5D00D8CEA5 /* CredifyCryptoSwiftTests */,
+				25818FF025A05D4100D8CEA5 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +285,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2581900925A064BE00D8CEA5 /* testPublicKeySign.pem in Resources */,
+				2581901325A064FC00D8CEA5 /* testPublicKey.pem in Resources */,
+				2581901425A064FC00D8CEA5 /* testPrivateKey.pem in Resources */,
+				2581901525A064FC00D8CEA5 /* testPrivateKeySign.pem in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25818FEF25A05D4100D8CEA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25818FFB25A05D4300D8CEA5 /* Preview Assets.xcassets in Resources */,
+				25818FF825A05D4300D8CEA5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,7 +319,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2581901D25A0678A00D8CEA5 /* EncryptionTests.swift in Sources */,
 				25818FC625A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift in Sources */,
+				2581900425A05E2800D8CEA5 /* SigningTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25818FED25A05D4100D8CEA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25818FF625A05D4100D8CEA5 /* ContentView.swift in Sources */,
+				2581903825A06E8100D8CEA5 /* EncryptionView.swift in Sources */,
+				25818FF425A05D4100D8CEA5 /* ExampleApp.swift in Sources */,
+				2581902B25A06E0500D8CEA5 /* SigningView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -347,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -456,6 +566,50 @@
 			};
 			name = Release;
 		};
+		25818FFE25A05D4300D8CEA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = 34C29C245L;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = one.credify.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		25818FFF25A05D4300D8CEA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
+				DEVELOPMENT_TEAM = 34C29C245L;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = one.credify.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,6 +636,15 @@
 			buildConfigurations = (
 				25818FCF25A03C5D00D8CEA5 /* Debug */,
 				25818FD025A03C5D00D8CEA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25818FFD25A05D4300D8CEA5 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25818FFE25A05D4300D8CEA5 /* Debug */,
+				25818FFF25A05D4300D8CEA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
