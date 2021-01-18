@@ -56,6 +56,9 @@ public enum CredifyCryptoSwiftError: Error {
     
     /// Internal error during verification
     case ed25519VerificationInternalError
+    
+    /// Error during symmetric encryption
+    case aesEncryptionError
 }
 
 extension CredifyCryptoSwiftError: LocalizedError {
@@ -93,6 +96,8 @@ extension CredifyCryptoSwiftError: LocalizedError {
             return NSLocalizedString("Internal error during signing.", comment: "Ed25519 Signing")
         case .ed25519VerificationInternalError:
             return NSLocalizedString("Internal error during verification.", comment: "Ed25519 Signing")
+        case .aesEncryptionError:
+            return NSLocalizedString("Symmetric encryption error", comment: "Password encryption")
         }
     }
 }

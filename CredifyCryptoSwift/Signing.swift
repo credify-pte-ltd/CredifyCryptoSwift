@@ -34,7 +34,8 @@ public struct Signing {
     /// - Parameters:
     ///     - privateKey: Private key restored from a pem file (PKCS#8)
     ///     - publicKey: Public key restored from a pem file (PKCS#8)
-    public init(privateKey: String?, publicKey: String?) throws {
+    ///     - password: Password in case the private key is encrypted
+    public init(privateKey: String?, publicKey: String?, password: String?) throws {
         var error: NSError?
         if privateKey == nil && publicKey == nil {
             throw CredifyCryptoSwiftError.curve25519KeyIncorrectInitialization
@@ -42,9 +43,18 @@ public struct Signing {
         
         var priv: CryptoSigningKeyProtocol? = nil
         var pub: CryptoVerificationKeyProtocol? = nil
+
+        // Parse private key with a password
+        if let p = privateKey, let pw = password {
+            priv = CryptoDecryptSigningKey(p, pw, &error)
+        }
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.curve25519PrivateKeyParsingFailed
+        }
         
-        // Parse private key
-        if let p = privateKey {
+        // Parse private key without a password
+        if let p = privateKey, password == nil {
             priv = CryptoParseSigningKey(p, &error)
         }
         if let e = error {
@@ -151,5 +161,22 @@ public struct Signing {
             print(error)
             throw CredifyCryptoSwiftError.ed25519VerificationInternalError
         }
+    }
+    
+    /// Exports an encrypted private key
+    ///
+    /// - Parameters:
+    ///     - password: password to encrypt the private key
+    func exportPrivateKey(password: String) throws -> String {
+        guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
+
+        var error: NSError?
+        let key = pk.export(password, error: &error)
+        
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.aesEncryptionError
+        }
+        return key
     }
 }

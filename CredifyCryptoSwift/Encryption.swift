@@ -38,7 +38,8 @@ public struct Encryption {
     /// - Parameters:
     ///     - privateKey: Private key restored from a pem file (PKCS#8)
     ///     - publicKey: Public key restored from a pem file (PKCS#8)
-    public init(privateKey: String?, publicKey: String?) throws {
+    ///     - password: Password in case the private key is encrypted
+    public init(privateKey: String?, publicKey: String?, password: String?) throws {
         var error: NSError?
         if privateKey == nil && publicKey == nil {
             throw CredifyCryptoSwiftError.rsaEncryptionIncorrectInitialization
@@ -47,8 +48,17 @@ public struct Encryption {
         var priv: CryptoEncryptionKeyProtocol? = nil
         var pub: CryptoEncryptionKeyProtocol? = nil
         
-        // Parse private key
-        if let p = privateKey {
+        // Parse private key with a password
+        if let p = privateKey, let pw = password {
+            priv = CryptoDecryptEncryptionPrivateKey(p, pw, &error)
+        }
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.rsaPrivateKeyParsingFailed
+        }
+        
+        // Parse private key without a password
+        if let p = privateKey, password == nil {
             priv = CryptoParseEncryptionPrivateKey(p, &error)
         }
         if let e = error {
@@ -148,5 +158,22 @@ public struct Encryption {
             print(error)
             throw CredifyCryptoSwiftError.rsaDecryptionInternalError
         }
+    }
+    
+    /// Exports an encrypted private key
+    ///
+    /// - Parameters:
+    ///     - password: password to encrypt the private key
+    public func exportPrivateKey(password: String) throws -> String {
+        guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.rsaPrivateKeyMissing }
+
+        var error: NSError?
+        let key = pk.export(password, error: &error)
+        
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.aesEncryptionError
+        }
+        return key
     }
 }
