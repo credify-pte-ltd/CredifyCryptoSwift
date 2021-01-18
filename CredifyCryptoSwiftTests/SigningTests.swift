@@ -31,13 +31,7 @@ class SigningTests: XCTestCase {
     }
     
     func testKey_Generation_from_pem() throws {
-        let bundle = Bundle(for: type(of: self))
-        let privFilepath = bundle.path(forResource: privateKeyFile, ofType: "pem")!
-        let pubFilepath = bundle.path(forResource: publicKeyFile, ofType: "pem")!
-        let privateKeyPEM = try! String(contentsOfFile: privFilepath)
-        let publicKeyPEM = try! String(contentsOfFile: pubFilepath)
-        
-        subject = try! Signing(privateKey: privateKeyPEM, publicKey: publicKeyPEM, password:  nil)
+        setup()
         
         XCTAssertEqual(subject.base64PrivateKey, "MC4CAQAwBQYDK2VwBCIEIPqO4b4UtXSaWGp5u38rCXYu4/LdbaSk7lD46LtRUu44")
         XCTAssertEqual(subject.base64PublicKey, "MCowBQYDK2VwAyEAfMZuEAjsoPr5GopucNfoY8ecwfsZ3XSXsY3zdG6ujCM=")
@@ -46,6 +40,19 @@ class SigningTests: XCTestCase {
     }
     
     func testSign() throws {
+        setup()
+        
+        let sign = try! subject.sign(data: str.data)
+        XCTAssertEqual(sign.base64EncodedString(), "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT/UV8I8PbJj/Gv7ll2bc2FFGepURUC23SBg==")
+        XCTAssertEqual(try! subject.verify(signature: sign, message: str), true)
+    }
+
+    func testGenerateLoginToken() {
+        setup()
+        XCTAssertNotEqual(subject.generateLoginToken(), "")
+    }
+    
+    private func setup() {
         let bundle = Bundle(for: type(of: self))
         let privFilepath = bundle.path(forResource: privateKeyFile, ofType: "pem")!
         let pubFilepath = bundle.path(forResource: publicKeyFile, ofType: "pem")!
@@ -53,10 +60,5 @@ class SigningTests: XCTestCase {
         let publicKeyPEM = try! String(contentsOfFile: pubFilepath)
         
         subject = try! Signing(privateKey: privateKeyPEM, publicKey: publicKeyPEM, password: nil)
-        
-        let sign = try! subject.sign(data: str.data)
-        XCTAssertEqual(sign.base64EncodedString(), "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT/UV8I8PbJj/Gv7ll2bc2FFGepURUC23SBg==")
-        XCTAssertEqual(try! subject.verify(signature: sign, message: str), true)
     }
-
 }

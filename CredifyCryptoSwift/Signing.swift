@@ -163,6 +163,16 @@ public struct Signing {
         }
     }
     
+    /// Returns a token to generate an access token.
+    func generateLoginToken() -> String {
+        return CryptoLoginToken(privateKey, publicKey)
+    }
+    
+    /// Returns if a passed token is valid or not.
+    func verifyLoginToken(_ token: String) -> Bool {
+        return CryptoVerifyLoginToken(token)
+    }
+    
     /// Exports an encrypted private key
     ///
     /// - Parameters:
