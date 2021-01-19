@@ -170,7 +170,11 @@ public struct Signing {
     
     /// Returns if a passed token is valid or not.
     func verifyLoginToken(_ token: String) -> Bool {
-        return CryptoVerifyLoginToken(token)
+        guard let claims = CryptoParseLoginToken(token) else {
+            return false
+        }
+        print(claims)
+        return true
     }
     
     /// Exports an encrypted private key
