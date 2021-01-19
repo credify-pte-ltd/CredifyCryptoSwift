@@ -26,7 +26,7 @@
 		2581901D25A0678A00D8CEA5 /* EncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */; };
 		2581902B25A06E0500D8CEA5 /* SigningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581902A25A06E0500D8CEA5 /* SigningView.swift */; };
 		2581903825A06E8100D8CEA5 /* EncryptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581903725A06E8100D8CEA5 /* EncryptionView.swift */; };
-		259C374825B5396700A8ACEF /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259C374725B5396700A8ACEF /* Crypto.framework */; };
+		259C374D25B6B6F400A8ACEF /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259C374C25B6B6F400A8ACEF /* Crypto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionTests.swift; sourceTree = "<group>"; };
 		2581902A25A06E0500D8CEA5 /* SigningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningView.swift; sourceTree = "<group>"; };
 		2581903725A06E8100D8CEA5 /* EncryptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionView.swift; sourceTree = "<group>"; };
-		259C374725B5396700A8ACEF /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crypto.framework; sourceTree = "<group>"; };
+		259C374C25B6B6F400A8ACEF /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crypto.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259C374825B5396700A8ACEF /* Crypto.framework in Frameworks */,
+				259C374D25B6B6F400A8ACEF /* Crypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +117,7 @@
 		25818FB925A03C5D00D8CEA5 /* CredifyCryptoSwift */ = {
 			isa = PBXGroup;
 			children = (
-				259C374725B5396700A8ACEF /* Crypto.framework */,
+				259C374C25B6B6F400A8ACEF /* Crypto.framework */,
 				25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */,
 				25818FBB25A03C5D00D8CEA5 /* Info.plist */,
 				25818FD325A03C7C00D8CEA5 /* Encryption.swift */,

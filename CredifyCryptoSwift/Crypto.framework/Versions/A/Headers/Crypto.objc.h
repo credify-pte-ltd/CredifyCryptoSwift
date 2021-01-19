@@ -141,6 +141,8 @@ FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseEncryptionPublicK
 // skipped function ParseHashedText with unsupported parameter or return types
 
 
+FOUNDATION_EXPORT CryptoLoginClaims* _Nullable CryptoParseLoginToken(NSString* _Nullable tokenString);
+
 FOUNDATION_EXPORT id<CryptoSigningKey> _Nullable CryptoParseSigningKey(NSString* _Nullable pem, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT id<CryptoVerificationKey> _Nullable CryptoParseVerificationKey(NSString* _Nullable pem, NSError* _Nullable* _Nullable error);
@@ -153,8 +155,6 @@ FOUNDATION_EXPORT id<CryptoSigningKey> _Nullable CryptoSigningKeyFromPEM(NSStrin
 FOUNDATION_EXPORT id<CryptoVerificationKey> _Nullable CryptoVerificationKeyFromPem(NSString* _Nullable pem);
 
 FOUNDATION_EXPORT BOOL CryptoVerifyHash(NSData* _Nullable hash, NSData* _Nullable message);
-
-FOUNDATION_EXPORT BOOL CryptoVerifyLoginToken(NSString* _Nullable tokenString);
 
 @class CryptoEncryptionKey;
 
