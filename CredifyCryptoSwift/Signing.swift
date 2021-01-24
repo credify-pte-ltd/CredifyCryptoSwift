@@ -80,14 +80,14 @@ public struct Signing {
         self.publicKey = pub
     }
     
-    /// Returns base64 encoded private key string.
-    public var base64PrivateKey: String {
-        return privateKey?.bytes()?.base64EncodedString() ?? ""
+    /// Returns base64 URL encoded private key string.
+    public var base64UrlPrivateKey: String {
+        return privateKey?.stringParam() ?? ""
     }
     
-    /// Returns base64 encoded public key string.
-    public var base64PublicKey: String {
-        return publicKey?.bytes()?.base64EncodedString() ?? ""
+    /// Returns base64 URL encoded public key string.
+    public var base64UrlPublicKey: String {
+        return publicKey?.stringParam() ?? ""
     }
     
     /// Returns private key in PKCS8 (pem string).
@@ -129,6 +129,23 @@ public struct Signing {
         }
     }
     
+    /// Generates a base64 URL encoded signature of provided message
+    ///
+    /// - Parameters:
+    ///     - message: Message to be signed in String type.
+    public func signBase64Url(message: String) throws -> String {
+        guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
+        
+        var error: NSError?
+        let sign = pk.sign(asBase64: message.data, error: &error)
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.ed25519SigningInternalError
+        }
+        return sign
+        
+    }
+    
     /// Verifies a signature with public key
     ///
     /// - Parameters:
@@ -149,13 +166,13 @@ public struct Signing {
     /// Verifies a signature with public key
     ///
     /// - Parameters:
-    ///     - base64Signature: Base64 encoded sinature.
+    ///     - base64UrlSignature: Base64 encoded sinature.
     ///     - message: Message to be signed in String type.
-    func verify(base64Signature: String, message: String) throws -> Bool {
+    func verify(base64UrlSignature: String, message: String) throws -> Bool {
         guard let pk = self.publicKey else { throw CredifyCryptoSwiftError.curve25519PublicKeyMissing }
         do {
             var isValid: ObjCBool = false
-            try pk.verify(base64Signature.base64Decoded, message: message.data, valid: &isValid)
+            try pk.verifyBase64(base64UrlSignature, message: message.data, valid: &isValid)
             return isValid.boolValue
         } catch (let error) {
             print(error)

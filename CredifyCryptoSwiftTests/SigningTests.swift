@@ -24,8 +24,8 @@ class SigningTests: XCTestCase {
     }
 
     func testKey_Generation() throws {
-        XCTAssertNotEqual(subject.base64PrivateKey, "")
-        XCTAssertNotEqual(subject.base64PublicKey, "")
+        XCTAssertNotEqual(subject.base64UrlPrivateKey, "")
+        XCTAssertNotEqual(subject.base64UrlPublicKey, "")
         XCTAssertNotEqual(subject.privateKeyPKCS8, "")
         XCTAssertNotEqual(subject.publicKeyPKCS8, "")
     }
@@ -33,8 +33,8 @@ class SigningTests: XCTestCase {
     func testKey_Generation_from_pem() throws {
         setup()
         
-        XCTAssertEqual(subject.base64PrivateKey, "MC4CAQAwBQYDK2VwBCIEIPqO4b4UtXSaWGp5u38rCXYu4/LdbaSk7lD46LtRUu44")
-        XCTAssertEqual(subject.base64PublicKey, "MCowBQYDK2VwAyEAfMZuEAjsoPr5GopucNfoY8ecwfsZ3XSXsY3zdG6ujCM=")
+        XCTAssertEqual(subject.base64UrlPrivateKey, "MC4CAQAwBQYDK2VwBCIEIPqO4b4UtXSaWGp5u38rCXYu4_LdbaSk7lD46LtRUu44")
+        XCTAssertEqual(subject.base64UrlPublicKey, "MCowBQYDK2VwAyEAfMZuEAjsoPr5GopucNfoY8ecwfsZ3XSXsY3zdG6ujCM")
         XCTAssertNotEqual(subject.privateKeyPKCS8, "")
         XCTAssertNotEqual(subject.publicKeyPKCS8, "")
     }
@@ -45,6 +45,10 @@ class SigningTests: XCTestCase {
         let sign = try! subject.sign(data: str.data)
         XCTAssertEqual(sign.base64EncodedString(), "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT/UV8I8PbJj/Gv7ll2bc2FFGepURUC23SBg==")
         XCTAssertEqual(try! subject.verify(signature: sign, message: str), true)
+        
+        let signBase64Url = try! subject.signBase64Url(message: str)
+        XCTAssertEqual(signBase64Url, "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT_UV8I8PbJj_Gv7ll2bc2FFGepURUC23SBg")
+        XCTAssertTrue(try! subject.verify(base64UrlSignature: signBase64Url, message: str))
     }
 
     func testGenerateLoginToken() {

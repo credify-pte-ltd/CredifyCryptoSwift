@@ -32,11 +32,13 @@
 - (NSString* _Nonnull)encryptAsBase64:(NSData* _Nullable)plain error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)export:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @protocol CryptoSerializable <NSObject>
 - (NSData* _Nullable)bytes;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @protocol CryptoSigningKey <NSObject>
@@ -45,11 +47,13 @@
 - (NSData* _Nullable)sign:(NSData* _Nullable)message error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)signAsBase64:(NSData* _Nullable)message error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @protocol CryptoVerificationKey <NSObject>
 - (NSData* _Nullable)bytes;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 - (BOOL)verify:(NSData* _Nullable)signature message:(NSData* _Nullable)message valid:(BOOL* _Nullable)valid error:(NSError* _Nullable* _Nullable)error;
 - (BOOL)verifyBase64:(NSString* _Nullable)signature message:(NSData* _Nullable)message valid:(BOOL* _Nullable)valid error:(NSError* _Nullable* _Nullable)error;
 @end
@@ -112,15 +116,23 @@ FOUNDATION_EXPORT const int64_t CryptoRsaKeyLength;
 // skipped function CipherTextValue with unsupported parameter or return types
 
 
+FOUNDATION_EXPORT NSData* _Nullable CryptoDecodeBase64(NSString* _Nullable payload, NSError* _Nullable* _Nullable error);
+
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoDecryptEncryptionPrivateKey(NSString* _Nullable encryptedPem, NSString* _Nullable password, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT id<CryptoSigningKey> _Nullable CryptoDecryptSigningKey(NSString* _Nullable encryptedPem, NSString* _Nullable password, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSString* _Nonnull CryptoEncodeBase64(NSData* _Nullable payload);
 
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoEncryptionPrivateKeyFromPem(NSString* _Nullable pem);
 
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoEncryptionPublicKeyFromPEM(NSString* _Nullable pem);
 
 FOUNDATION_EXPORT CryptoEncryptionKeyPair* _Nullable CryptoGenerateEncryptionKeyPair(NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSData* _Nullable CryptoGenerateSalt(NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT NSString* _Nonnull CryptoGenerateSaltAsBase64(NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT CryptoSigningKeyPair* _Nullable CryptoGenerateSigningKeyPair(NSError* _Nullable* _Nullable error);
 
@@ -176,6 +188,7 @@ FOUNDATION_EXPORT BOOL CryptoVerifyHash(NSData* _Nullable hash, NSData* _Nullabl
 - (NSString* _Nonnull)encryptAsBase64:(NSData* _Nullable)plain error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)export:(NSString* _Nullable)password error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @interface CryptoSerializable : NSObject <goSeqRefInterface, CryptoSerializable> {
@@ -185,6 +198,7 @@ FOUNDATION_EXPORT BOOL CryptoVerifyHash(NSData* _Nullable hash, NSData* _Nullabl
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (NSData* _Nullable)bytes;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @interface CryptoSigningKey : NSObject <goSeqRefInterface, CryptoSigningKey> {
@@ -197,6 +211,7 @@ FOUNDATION_EXPORT BOOL CryptoVerifyHash(NSData* _Nullable hash, NSData* _Nullabl
 - (NSData* _Nullable)sign:(NSData* _Nullable)message error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)signAsBase64:(NSData* _Nullable)message error:(NSError* _Nullable* _Nullable)error;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 @end
 
 @interface CryptoVerificationKey : NSObject <goSeqRefInterface, CryptoVerificationKey> {
@@ -206,6 +221,7 @@ FOUNDATION_EXPORT BOOL CryptoVerifyHash(NSData* _Nullable hash, NSData* _Nullabl
 - (nonnull instancetype)initWithRef:(_Nonnull id)ref;
 - (NSData* _Nullable)bytes;
 - (NSString* _Nonnull)string;
+- (NSString* _Nonnull)stringParam;
 - (BOOL)verify:(NSData* _Nullable)signature message:(NSData* _Nullable)message valid:(BOOL* _Nullable)valid error:(NSError* _Nullable* _Nullable)error;
 - (BOOL)verifyBase64:(NSString* _Nullable)signature message:(NSData* _Nullable)message valid:(BOOL* _Nullable)valid error:(NSError* _Nullable* _Nullable)error;
 @end

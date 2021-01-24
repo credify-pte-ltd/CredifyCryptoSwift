@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		256B59F125BDB48700443B57 /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 256B59F025BDB48700443B57 /* Crypto.framework */; };
+		256B59F625BDC4B700443B57 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B59F525BDC4B700443B57 /* Helpers.swift */; };
 		25818FC125A03C5D00D8CEA5 /* CredifyCryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25818FB725A03C5D00D8CEA5 /* CredifyCryptoSwift.framework */; };
 		25818FC625A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FC525A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift */; };
 		25818FC825A03C5D00D8CEA5 /* CredifyCryptoSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,7 +28,6 @@
 		2581901D25A0678A00D8CEA5 /* EncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */; };
 		2581902B25A06E0500D8CEA5 /* SigningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581902A25A06E0500D8CEA5 /* SigningView.swift */; };
 		2581903825A06E8100D8CEA5 /* EncryptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2581903725A06E8100D8CEA5 /* EncryptionView.swift */; };
-		259C374D25B6B6F400A8ACEF /* Crypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259C374C25B6B6F400A8ACEF /* Crypto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		256B59F025BDB48700443B57 /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crypto.framework; sourceTree = "<group>"; };
+		256B59F525BDC4B700443B57 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		25818FB725A03C5D00D8CEA5 /* CredifyCryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CredifyCryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CredifyCryptoSwift.h; sourceTree = "<group>"; };
 		25818FBB25A03C5D00D8CEA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +67,6 @@
 		2581901C25A0678A00D8CEA5 /* EncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionTests.swift; sourceTree = "<group>"; };
 		2581902A25A06E0500D8CEA5 /* SigningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigningView.swift; sourceTree = "<group>"; };
 		2581903725A06E8100D8CEA5 /* EncryptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptionView.swift; sourceTree = "<group>"; };
-		259C374C25B6B6F400A8ACEF /* Crypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crypto.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259C374D25B6B6F400A8ACEF /* Crypto.framework in Frameworks */,
+				256B59F125BDB48700443B57 /* Crypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,13 +119,14 @@
 		25818FB925A03C5D00D8CEA5 /* CredifyCryptoSwift */ = {
 			isa = PBXGroup;
 			children = (
-				259C374C25B6B6F400A8ACEF /* Crypto.framework */,
+				256B59F025BDB48700443B57 /* Crypto.framework */,
 				25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */,
 				25818FBB25A03C5D00D8CEA5 /* Info.plist */,
 				25818FD325A03C7C00D8CEA5 /* Encryption.swift */,
 				25818FDF25A04B2500D8CEA5 /* Signing.swift */,
 				25818FDB25A03D4B00D8CEA5 /* Errors.swift */,
 				25818FE325A050E200D8CEA5 /* Extensions.swift */,
+				256B59F525BDC4B700443B57 /* Helpers.swift */,
 			);
 			path = CredifyCryptoSwift;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				25818FDC25A03D4B00D8CEA5 /* Errors.swift in Sources */,
 				25818FD425A03C7C00D8CEA5 /* Encryption.swift in Sources */,
 				25818FE025A04B2500D8CEA5 /* Signing.swift in Sources */,
+				256B59F625BDC4B700443B57 /* Helpers.swift in Sources */,
 				25818FE425A050E200D8CEA5 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

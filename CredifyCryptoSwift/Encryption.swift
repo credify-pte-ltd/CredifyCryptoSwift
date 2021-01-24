@@ -84,14 +84,14 @@ public struct Encryption {
         self.publicKey = pub
     }
     
-    /// Returns base64 encoded private key string.
-    public var base64PrivateKey: String {
-        return privateKey?.bytes()?.base64EncodedString() ?? ""
+    /// Returns base64 URL encoded private key string.
+    public var base64UrlPrivateKey: String {
+        return privateKey?.stringParam() ?? ""
     }
     
-    /// Returns base64 encoded public key string.
-    public var base64PublicKey: String {
-        return publicKey?.bytes()?.base64EncodedString() ?? ""
+    /// Returns base64 URL encoded public key string.
+    public var base64UrlPublicKey: String {
+        return publicKey?.stringParam() ?? ""
     }
     
     /// Returns private key in PKCS8 (pem string).
@@ -132,6 +132,21 @@ public struct Encryption {
         }
     }
     
+    /// Encrypts provided plain texts (String) into base64 URL
+    ///
+    /// - Parameters:
+    ///     - message: Plain texts in String type.
+    public func encryptBase64Url(message: String) throws -> String {
+        guard let pk = self.publicKey else { throw CredifyCryptoSwiftError.rsaPublicKeyMissing }
+        var error: NSError? = nil
+        let cipher = pk.encrypt(asBase64: message.data, error: &error)
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.rsaEncryptionInternalError
+        }
+        return cipher
+    }
+    
     /// Decrypts provided cipher texts (Data)
     ///
     /// - Parameters:
@@ -149,11 +164,11 @@ public struct Encryption {
     /// Decrypts provided cipher texts (String)
     ///
     /// - Parameters:
-    ///     - cipher: Base64 encoded cipher texts in String type.
-    public func decrypt(base64Cipher cipher: String) throws -> Data {
+    ///     - cipher: Base64 URL encoded cipher texts in String type.
+    public func decrypt(base64UrlCipher cipher: String) throws -> String {
         guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.rsaPrivateKeyMissing }
         do {
-            return try pk.decrypt(cipher.base64Decoded)
+            return try pk.decryptBase64(cipher).string ?? ""
         } catch (let error) {
             print(error)
             throw CredifyCryptoSwiftError.rsaDecryptionInternalError
