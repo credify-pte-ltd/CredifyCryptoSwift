@@ -115,29 +115,34 @@ public struct Signing {
         }
     }
     
-    /// Generates a signature of provided message
-    ///
-    /// - Parameters:
-    ///     - message: Message to be signed in String type.
+    /**
+     Generates a signature of provided message
+     - Parameters:
+        - message: Message to be signed in Base64URL String type.
+     */
     public func sign(message: String) throws -> Data {
         guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
         do {
-            return try pk.sign(message.data)
+            var error: NSError?
+            let decodeMessage = CryptoDecodeBase64(message, &error)
+            return try pk.sign(decodeMessage)
         } catch (let error) {
             print(error)
             throw CredifyCryptoSwiftError.ed25519SigningInternalError
         }
     }
     
-    /// Generates a base64 URL encoded signature of provided message
-    ///
-    /// - Parameters:
-    ///     - message: Message to be signed in String type.
+    /**
+     Generates a base64 URL encoded signature of provided message
+     - Parameters:
+        - message: Message to be signed in Base64URL String type.
+     */
     public func signBase64Url(message: String) throws -> String {
         guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
         
         var error: NSError?
-        let sign = pk.sign(asBase64: message.data, error: &error)
+        let decodeMessage = CryptoDecodeBase64(message, &error)
+        let sign = pk.sign(asBase64: decodeMessage, error: &error)
         if let e = error {
             print(e)
             throw CredifyCryptoSwiftError.ed25519SigningInternalError
