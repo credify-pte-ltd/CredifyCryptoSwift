@@ -151,7 +151,7 @@ public struct Signing {
     /// - Parameters:
     ///     - signature: Sinature Data.
     ///     - message: Message to be signed in String type.
-    func verify(signature: Data, message: String) throws -> Bool {
+    public func verify(signature: Data, message: String) throws -> Bool {
         guard let pk = self.publicKey else { throw CredifyCryptoSwiftError.curve25519PublicKeyMissing }
         do {
             var isValid: ObjCBool = false
@@ -168,7 +168,7 @@ public struct Signing {
     /// - Parameters:
     ///     - base64UrlSignature: Base64 encoded sinature.
     ///     - message: Message to be signed in String type.
-    func verify(base64UrlSignature: String, message: String) throws -> Bool {
+    public func verify(base64UrlSignature: String, message: String) throws -> Bool {
         guard let pk = self.publicKey else { throw CredifyCryptoSwiftError.curve25519PublicKeyMissing }
         do {
             var isValid: ObjCBool = false
@@ -181,13 +181,14 @@ public struct Signing {
     }
     
     /// Returns a token to generate an access token.
-    func generateLoginToken() -> String {
+    public func generateLoginToken() -> String {
         return CryptoLoginToken(privateKey, publicKey)
     }
     
     /// Returns if a passed token is valid or not.
-    func verifyLoginToken(_ token: String) -> Bool {
-        guard let claims = CryptoParseLoginToken(token) else {
+    public func verifyLoginToken(_ token: String) -> Bool {
+        var error: NSError? = nil
+        guard let claims = CryptoParseLoginToken(token, &error) else {
             return false
         }
         print(claims)
@@ -198,7 +199,7 @@ public struct Signing {
     ///
     /// - Parameters:
     ///     - password: password to encrypt the private key
-    func exportPrivateKey(password: String) throws -> String {
+    public func exportPrivateKey(password: String) throws -> String {
         guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
 
         var error: NSError?

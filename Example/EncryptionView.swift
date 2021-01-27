@@ -31,9 +31,9 @@ struct EncryptionView: View {
         List {
             VStack {
                 Text("Private key").bold().padding().foregroundColor(.blue)
-                Text(encryption?.base64PrivateKey ?? "").contextMenu {
+                Text(encryption?.base64UrlPrivateKey ?? "").contextMenu {
                     Button(action: {
-                        UIPasteboard.general.string = encryption?.base64PrivateKey ?? ""
+                        UIPasteboard.general.string = encryption?.base64UrlPrivateKey ?? ""
                     }) {
                         Text("Copy to clipboard")
                         Image(systemName: "doc.on.doc")
@@ -43,9 +43,9 @@ struct EncryptionView: View {
             }
             VStack {
                 Text("Public key").bold().padding().foregroundColor(.blue)
-                Text(encryption?.base64PublicKey ?? "").contextMenu {
+                Text(encryption?.base64UrlPublicKey ?? "").contextMenu {
                     Button(action: {
-                        UIPasteboard.general.string = encryption?.base64PublicKey ?? ""
+                        UIPasteboard.general.string = encryption?.base64UrlPublicKey ?? ""
                     }) {
                         Text("Copy to clipboard")
                         Image(systemName: "doc.on.doc")
