@@ -8,6 +8,10 @@
 import Foundation
 import Crypto
 
+public enum EncodeType {
+    case none, base64, base64URL
+}
+
 public struct Signing {
     private let privateKey: CryptoSigningKeyProtocol?
     private let publicKey: CryptoVerificationKeyProtocol?
@@ -123,9 +127,7 @@ public struct Signing {
     public func sign(message: String) throws -> Data {
         guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
         do {
-            var error: NSError?
-            let decodeMessage = CryptoDecodeBase64(message, &error)
-            return try pk.sign(decodeMessage)
+            return try pk.sign(message.data)
         } catch (let error) {
             print(error)
             throw CredifyCryptoSwiftError.ed25519SigningInternalError
@@ -135,14 +137,29 @@ public struct Signing {
     /**
      Generates a base64 URL encoded signature of provided message
      - Parameters:
-        - message: Message to be signed in Base64URL String type.
+        - message: Message to be signed in String type.
+        - option: encode type of message
+            * none -> message is not encode
+            * base64 -> message is encode by base64
+            * base64URL -> message is encode by base64URL
      */
-    public func signBase64Url(message: String) throws -> String {
-        guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
-        
+    public func signBase64Url(message: String, option: EncodeType = .none) throws -> String {
         var error: NSError?
-        let decodeMessage = CryptoDecodeBase64(message, &error)
-        let sign = pk.sign(asBase64: decodeMessage, error: &error)
+        var decodeMessage = message
+        switch option {
+        case .base64:
+            decodeMessage = message.base64Decoded?.string ?? ""
+        case .base64URL:
+            do {
+                decodeMessage = try Signing.decodeBase64URL(message: decodeMessage)
+            }catch {
+                throw CredifyCryptoSwiftError.ed25519SigningInternalError
+            }
+        case .none:
+            break
+        }
+        guard let pk = self.privateKey else { throw CredifyCryptoSwiftError.curve25519PrivateKeyMissing }
+        let sign = pk.sign(asBase64: decodeMessage.data, error: &error)
         if let e = error {
             print(e)
             throw CredifyCryptoSwiftError.ed25519SigningInternalError
@@ -215,5 +232,26 @@ public struct Signing {
             throw CredifyCryptoSwiftError.aesEncryptionError
         }
         return key
+    }
+    
+    static func decodeBase64URL(message: String) throws -> String {
+        var error: NSError?
+        let decodeData = CryptoDecodeBase64(message, &error)
+        
+        if let e = error {
+            print(e)
+            throw CredifyCryptoSwiftError.ed25519SigningInternalError
+        }
+        
+        if let result = decodeData?.string {
+            return result
+        }else {
+            throw CredifyCryptoSwiftError.ed25519SigningInternalError
+        }
+    }
+    
+    static func encodeBase64URL(message: String) -> String {
+        let encodeMessage = CryptoEncodeBase64(message.data)
+        return encodeMessage
     }
 }

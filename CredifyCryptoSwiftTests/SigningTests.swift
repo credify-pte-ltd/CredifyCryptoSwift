@@ -46,9 +46,23 @@ class SigningTests: XCTestCase {
         XCTAssertEqual(sign.base64EncodedString(), "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT/UV8I8PbJj/Gv7ll2bc2FFGepURUC23SBg==")
         XCTAssertEqual(try! subject.verify(signature: sign, message: str), true)
         
-        let signBase64Url = try! subject.signBase64Url(message: str)
-        XCTAssertEqual(signBase64Url, "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT_UV8I8PbJj_Gv7ll2bc2FFGepURUC23SBg")
-        XCTAssertTrue(try! subject.verify(base64UrlSignature: signBase64Url, message: str))
+        let signBase64UrlTestOne = try! subject.signBase64Url(message: str)
+        XCTAssertEqual(signBase64UrlTestOne, "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT_UV8I8PbJj_Gv7ll2bc2FFGepURUC23SBg")
+        XCTAssertTrue(try! subject.verify(base64UrlSignature: signBase64UrlTestOne, message: str))
+        
+        let encodeBase64URL = Signing.encodeBase64URL(message: str)
+        XCTAssertEqual(encodeBase64URL, "VGhpcyBpcyBhIHRlc3QgbWVzc2FnZSE")
+        
+        let signBase64UrlTestTwo = try! subject.signBase64Url(message: encodeBase64URL, option: .base64URL)
+        XCTAssertEqual(signBase64UrlTestTwo, "oJ6yDFkgsQk8wMqLQm2vtBVKxJ69fH2oU5SYIrCaTy5RjHdpIFBT_UV8I8PbJj_Gv7ll2bc2FFGepURUC23SBg")
+        XCTAssertTrue(try! subject.verify(base64UrlSignature: signBase64UrlTestTwo, message: str))
+    }
+    
+    func testEncode_and_decode_base64URL() {
+        setUp()
+        let encode = Signing.encodeBase64URL(message: str)
+        XCTAssertEqual(encode, "VGhpcyBpcyBhIHRlc3QgbWVzc2FnZSE")
+        XCTAssertEqual(try! Signing.decodeBase64URL(message: encode), str)
     }
 
     func testGenerateLoginToken() {
