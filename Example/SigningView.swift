@@ -31,9 +31,9 @@ struct SigningView: View {
         List {
             VStack {
                 Text("Private key").bold().padding().foregroundColor(.green)
-                Text(siging?.base64PrivateKey ?? "").contextMenu {
+                Text(siging?.base64UrlPrivateKey ?? "").contextMenu {
                     Button(action: {
-                        UIPasteboard.general.string = siging?.base64PrivateKey ?? ""
+                        UIPasteboard.general.string = siging?.base64UrlPrivateKey ?? ""
                     }) {
                         Text("Copy to clipboard")
                         Image(systemName: "doc.on.doc")
@@ -43,9 +43,9 @@ struct SigningView: View {
             }
             VStack {
                 Text("Public key").bold().padding().foregroundColor(.green)
-                Text(siging?.base64PublicKey ?? "").contextMenu {
+                Text(siging?.base64UrlPublicKey ?? "").contextMenu {
                     Button(action: {
-                        UIPasteboard.general.string = siging?.base64PublicKey ?? ""
+                        UIPasteboard.general.string = siging?.base64UrlPublicKey ?? ""
                     }) {
                         Text("Copy to clipboard")
                         Image(systemName: "doc.on.doc")

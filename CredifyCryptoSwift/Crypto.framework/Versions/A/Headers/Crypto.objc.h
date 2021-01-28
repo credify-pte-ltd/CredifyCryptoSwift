@@ -126,7 +126,7 @@ FOUNDATION_EXPORT NSString* _Nonnull CryptoEncodeBase64(NSData* _Nullable payloa
 
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoEncryptionPrivateKeyFromPem(NSString* _Nullable pem);
 
-FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoEncryptionPublicKeyFromPEM(NSString* _Nullable pem);
+FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoEncryptionPublicKeyFromPem(NSString* _Nullable pem);
 
 FOUNDATION_EXPORT CryptoEncryptionKeyPair* _Nullable CryptoGenerateEncryptionKeyPair(NSError* _Nullable* _Nullable error);
 
@@ -143,6 +143,14 @@ FOUNDATION_EXPORT NSData* _Nullable CryptoHash(NSData* _Nullable message);
 
 FOUNDATION_EXPORT NSString* _Nonnull CryptoLoginToken(id<CryptoSigningKey> _Nullable signingKey, id<CryptoVerificationKey> _Nullable verificationKey);
 
+FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseBase64EncryptionPrivateKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseBase64EncryptionPublicKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT id<CryptoSigningKey> _Nullable CryptoParseBase64SigningKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
+
+FOUNDATION_EXPORT id<CryptoVerificationKey> _Nullable CryptoParseBase64VerificationKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
+
 // skipped function ParseCipherText with unsupported parameter or return types
 
 
@@ -153,7 +161,7 @@ FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseEncryptionPublicK
 // skipped function ParseHashedText with unsupported parameter or return types
 
 
-FOUNDATION_EXPORT CryptoLoginClaims* _Nullable CryptoParseLoginToken(NSString* _Nullable tokenString);
+FOUNDATION_EXPORT CryptoLoginClaims* _Nullable CryptoParseLoginToken(NSString* _Nullable tokenString, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT id<CryptoSigningKey> _Nullable CryptoParseSigningKey(NSString* _Nullable pem, NSError* _Nullable* _Nullable error);
 
