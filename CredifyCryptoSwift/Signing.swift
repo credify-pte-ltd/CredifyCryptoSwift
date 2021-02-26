@@ -217,6 +217,16 @@ public struct Signing {
         return true
     }
     
+    /// Returns an approval token needed for OIDC completion.
+    public func generateApprovalToken(id: String, clientId: String, scopes: [String], offerCode: String?) -> String {
+        return CryptoNewApprovalToken(privateKey, id, clientId, scopes.joined(separator: " "), offerCode)
+    }
+    
+    /// Returns a request token needed for OIDC initiation.
+    public func generateRequestToken(id: String, clientId: String, encryptionKey: String, scopes: [String], offerCode: String?) -> String {
+        return CryptoNewRequestToken(privateKey, clientId, encryptionKey, scopes.joined(separator: " "), offerCode)
+    }
+    
     /// Exports an encrypted private key
     ///
     /// - Parameters:

@@ -11,9 +11,11 @@
 #include "Universe.objc.h"
 
 
+@class CryptoApprovalTokenClaims;
 @class CryptoEncryptionKeyPair;
 @class CryptoLoginClaims;
 @class CryptoMaskedText;
+@class CryptoRequestTokenClaims;
 @class CryptoSigningKeyPair;
 @protocol CryptoEncryptionKey;
 @class CryptoEncryptionKey;
@@ -58,6 +60,25 @@
 - (BOOL)verifyBase64:(NSString* _Nullable)signature message:(NSData* _Nullable)message valid:(BOOL* _Nullable)valid error:(NSError* _Nullable* _Nullable)error;
 @end
 
+@interface CryptoApprovalTokenClaims : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+// skipped field ApprovalTokenClaims.StandardClaims with unsupported type: github.com/dgrijalva/jwt-go.StandardClaims
+
+@property (nonatomic) NSString* _Nonnull clientId;
+@property (nonatomic) NSString* _Nonnull scopes;
+@property (nonatomic) NSString* _Nonnull offerCode;
+- (BOOL)valid:(NSError* _Nullable* _Nullable)error;
+- (BOOL)verifyAudience:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyExpiresAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuedAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuer:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyNotBefore:(int64_t)cmp req:(BOOL)req;
+@end
+
 @interface CryptoEncryptionKeyPair : NSObject <goSeqRefInterface> {
 }
 @property(strong, readonly) _Nonnull id _ref;
@@ -95,6 +116,25 @@
 
 // skipped field MaskedText.Cipher with unsupported type: gitlab.com/credify.one/sdks/crypto.CipherText
 
+@end
+
+@interface CryptoRequestTokenClaims : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+// skipped field RequestTokenClaims.StandardClaims with unsupported type: github.com/dgrijalva/jwt-go.StandardClaims
+
+@property (nonatomic) NSString* _Nonnull encryptionPublicKey;
+@property (nonatomic) NSString* _Nonnull scopes;
+@property (nonatomic) NSString* _Nonnull offerCode;
+- (BOOL)valid:(NSError* _Nullable* _Nullable)error;
+- (BOOL)verifyAudience:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyExpiresAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuedAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuer:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyNotBefore:(int64_t)cmp req:(BOOL)req;
 @end
 
 @interface CryptoSigningKeyPair : NSObject <goSeqRefInterface> {
@@ -143,6 +183,13 @@ FOUNDATION_EXPORT NSData* _Nullable CryptoHash(NSData* _Nullable message);
 
 FOUNDATION_EXPORT NSString* _Nonnull CryptoLoginToken(id<CryptoSigningKey> _Nullable signingKey, id<CryptoVerificationKey> _Nullable verificationKey);
 
+FOUNDATION_EXPORT NSString* _Nonnull CryptoNewApprovalToken(id<CryptoSigningKey> _Nullable signingKey, NSString* _Nullable entityId, NSString* _Nullable clientId, NSString* _Nullable scopes, NSString* _Nullable offerCode);
+
+FOUNDATION_EXPORT NSString* _Nonnull CryptoNewRequestToken(id<CryptoSigningKey> _Nullable signingKey, NSString* _Nullable consumerId, NSString* _Nullable encryptionKey, NSString* _Nullable scopes, NSString* _Nullable offerCode);
+
+// skipped function NewToken with unsupported parameter or return types
+
+
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseBase64EncryptionPrivateKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
 
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseBase64EncryptionPublicKey(NSString* _Nullable base64, NSError* _Nullable* _Nullable error);
@@ -159,6 +206,9 @@ FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseEncryptionPrivate
 FOUNDATION_EXPORT id<CryptoEncryptionKey> _Nullable CryptoParseEncryptionPublicKey(NSString* _Nullable pem, NSError* _Nullable* _Nullable error);
 
 // skipped function ParseHashedText with unsupported parameter or return types
+
+
+// skipped function ParseJwt with unsupported parameter or return types
 
 
 FOUNDATION_EXPORT CryptoLoginClaims* _Nullable CryptoParseLoginToken(NSString* _Nullable tokenString, NSError* _Nullable* _Nullable error);
