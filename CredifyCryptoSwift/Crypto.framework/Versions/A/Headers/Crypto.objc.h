@@ -13,6 +13,7 @@
 
 @class CryptoApprovalTokenClaims;
 @class CryptoEncryptionKeyPair;
+@class CryptoIdentityTokenClaims;
 @class CryptoLoginClaims;
 @class CryptoMaskedText;
 @class CryptoRequestTokenClaims;
@@ -87,6 +88,24 @@
 - (nonnull instancetype)init;
 @property (nonatomic) id<CryptoEncryptionKey> _Nullable privateKey;
 @property (nonatomic) id<CryptoEncryptionKey> _Nullable publicKey;
+@end
+
+@interface CryptoIdentityTokenClaims : NSObject <goSeqRefInterface> {
+}
+@property(strong, readonly) _Nonnull id _ref;
+
+- (nonnull instancetype)initWithRef:(_Nonnull id)ref;
+- (nonnull instancetype)init;
+// skipped field IdentityTokenClaims.StandardClaims with unsupported type: github.com/dgrijalva/jwt-go.StandardClaims
+
+@property (nonatomic) NSString* _Nonnull identitySource;
+@property (nonatomic) NSString* _Nonnull identityHash;
+- (BOOL)valid:(NSError* _Nullable* _Nullable)error;
+- (BOOL)verifyAudience:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyExpiresAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuedAt:(int64_t)cmp req:(BOOL)req;
+- (BOOL)verifyIssuer:(NSString* _Nullable)cmp req:(BOOL)req;
+- (BOOL)verifyNotBefore:(int64_t)cmp req:(BOOL)req;
 @end
 
 @interface CryptoLoginClaims : NSObject <goSeqRefInterface> {
@@ -184,6 +203,8 @@ FOUNDATION_EXPORT NSData* _Nullable CryptoHash(NSData* _Nullable message);
 FOUNDATION_EXPORT NSString* _Nonnull CryptoLoginToken(id<CryptoSigningKey> _Nullable signingKey, id<CryptoVerificationKey> _Nullable verificationKey);
 
 FOUNDATION_EXPORT NSString* _Nonnull CryptoNewApprovalToken(id<CryptoSigningKey> _Nullable signingKey, NSString* _Nullable entityId, NSString* _Nullable clientId, NSString* _Nullable scopes, NSString* _Nullable offerCode);
+
+FOUNDATION_EXPORT NSString* _Nonnull CryptoNewIdentityToken(id<CryptoSigningKey> _Nullable signingKey, NSString* _Nullable entityId, NSString* _Nullable source, NSString* _Nullable hash);
 
 FOUNDATION_EXPORT NSString* _Nonnull CryptoNewRequestToken(id<CryptoSigningKey> _Nullable signingKey, NSString* _Nullable consumerId, NSString* _Nullable encryptionKey, NSString* _Nullable scopes, NSString* _Nullable offerCode);
 
