@@ -228,7 +228,7 @@ public struct Signing {
     }
     
     /**
-     Generate a identity token needed for signing the PII
+     Generate an identity token needed for signing the PII
      */
     public func generateIdentityToken(entityId: String, source: String, hash: String) -> String {
         return CryptoNewIdentityToken(privateKey, entityId, source, hash)
