@@ -227,6 +227,13 @@ public struct Signing {
         return CryptoNewRequestToken(privateKey, clientId, encryptionKey, scopes.joined(separator: " "), offerCode)
     }
     
+    /**
+     Generate a identity token needed for signing the PII
+     */
+    public func generateIdentityToken(entityId: String, source: String, hash: String) -> String {
+        return CryptoNewIdentityToken(privateKey, entityId, source, hash)
+    }
+    
     /// Exports an encrypted private key
     ///
     /// - Parameters:

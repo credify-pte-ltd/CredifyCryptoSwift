@@ -1,0 +1,11 @@
+framework module CredifyCryptoSwift {
+  umbrella header "CredifyCryptoSwift.h"
+
+  export *
+  module * { export * }
+}
+
+module CredifyCryptoSwift.Swift {
+    header "CredifyCryptoSwift-Swift.h"
+    requires objc
+}
