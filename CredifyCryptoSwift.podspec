@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name = "CredifyCryptoSwift"
-  spec.version = "1.1.4"
+  spec.version = "1.1.5"
   spec.summary = "Credify crypto related framework in Swift"
   spec.description = "Cryptography functions and helpers for Swift. Ed25519 signing, RSA encryption. With PKCS#8 format."
   spec.homepage = "https://github.com/credify-pte-ltd/CredifyCryptoSwift"
@@ -22,5 +22,7 @@ Pod::Spec.new do |spec|
   spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}"
   # spec.ios.public_header_files = "CredifyCryptoSwift/Crypto.framework/Versions/A/Headers/*.h"
   spec.vendored_frameworks = "CredifyCryptoSwift/Crypto.framework"
+spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end
