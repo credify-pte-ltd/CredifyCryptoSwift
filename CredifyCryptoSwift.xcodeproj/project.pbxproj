@@ -498,6 +498,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/CredifyCryptoSwift",
 				);
 				INFOPLIST_FILE = CredifyCryptoSwift/Info.plist;
@@ -534,6 +535,7 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/CredifyCryptoSwift",
 				);
 				INFOPLIST_FILE = CredifyCryptoSwift/Info.plist;
