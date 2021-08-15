@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		256B59F625BDC4B700443B57 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B59F525BDC4B700443B57 /* Helpers.swift */; };
 		257BAA5726C8FDEF0095900F /* Crypto.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257BAA5526C8FDEA0095900F /* Crypto.xcframework */; };
-		257BAA5826C8FDEF0095900F /* Crypto.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 257BAA5526C8FDEA0095900F /* Crypto.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25818FC125A03C5D00D8CEA5 /* CredifyCryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25818FB725A03C5D00D8CEA5 /* CredifyCryptoSwift.framework */; };
 		25818FC625A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25818FC525A03C5D00D8CEA5 /* CredifyCryptoSwiftTests.swift */; };
 		25818FC825A03C5D00D8CEA5 /* CredifyCryptoSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 25818FBA25A03C5D00D8CEA5 /* CredifyCryptoSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,20 +39,6 @@
 			remoteInfo = CredifyCryptoSwift;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		257BAA5926C8FDEF0095900F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				257BAA5826C8FDEF0095900F /* Crypto.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		256B59F525BDC4B700443B57 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -213,7 +198,6 @@
 				25818FB325A03C5D00D8CEA5 /* Sources */,
 				25818FB425A03C5D00D8CEA5 /* Frameworks */,
 				25818FB525A03C5D00D8CEA5 /* Resources */,
-				257BAA5926C8FDEF0095900F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
