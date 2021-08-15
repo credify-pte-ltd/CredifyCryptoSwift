@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
   spec.description = "Cryptography functions and helpers for Swift. Ed25519 signing, RSA encryption. With PKCS#8 format."
   spec.homepage = "https://github.com/credify-pte-ltd/CredifyCryptoSwift"
   spec.license = { type: 'MIT', file: 'LICENSE' }
-  spec.authors = { "Shuichi Nagao" => 'shu@credify.one' }
+  spec.authors = { "Credify Ptd. Ltd." => 'dev@credify.one' }
   spec.social_media_url = "https://credify.one"
   spec.swift_version = "5.3"
   spec.platform = :ios, "12.0"
@@ -21,8 +21,8 @@ Pod::Spec.new do |spec|
   # spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}", "CredifyCryptoSwift/Crypto.framework"
   spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}"
   # spec.ios.public_header_files = "CredifyCryptoSwift/Crypto.framework/Versions/A/Headers/*.h"
-  spec.vendored_frameworks = "CredifyCryptoSwift/Crypto.framework"
-spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.vendored_frameworks = "Frameworks/Crypto.xcframework"
+  #spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  #spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end
