@@ -22,7 +22,7 @@ Pod::Spec.new do |spec|
   spec.source_files = "CredifyCryptoSwift/**/*.{h,swift}"
   # spec.ios.public_header_files = "CredifyCryptoSwift/Crypto.framework/Versions/A/Headers/*.h"
   spec.vendored_frameworks = "Frameworks/Crypto.xcframework"
-  #spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  #spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end
